@@ -24,8 +24,6 @@ public class MainProyecto {
         tam = sc.nextInt();
         productos = new Proyecto1[tam];
         int tam2 = 0;
-        
-        
 
         for (int i = 0; i < productos.length; i++) {
             productos[i] = new Proyecto1();
@@ -35,9 +33,9 @@ public class MainProyecto {
         int opc2 = 100;//Producto a mostrar
         int opc3 = 100;//menu secundario
         String opc4 = "";
-      
+
         tam2 = tam;
-        
+
         while (opc != 0) {
             System.out.println("Tamaño de la cartera : " + tam);
             System.out.println("te quedan estos registro: " + tam2);
@@ -47,30 +45,41 @@ public class MainProyecto {
             System.out.println("0) Cerrar Systema ");
             System.out.println("Elige una opcion: ");
             opc = sc.nextInt();
-            tam2=tam2-tam;
+            tam2 = tam2 - tam;
             switch (opc) {
                 case 1:
-                    try {
-
-                        for (int i = 0; i < productos.length; i++) {
-                            System.out.print("Ingresa el codigo cliente: ");
-                            productos[i].setCodigoCliente(sc.nextInt());
-                            System.out.print("Nombre o nombres:");
-                            productos[i].setNombre(bf.readLine());
-                            System.out.print("Apellido Paterno:");
-                            productos[i].setApellidoPaterno(bf.readLine());
-                            System.out.print("Apeliido Materno:");
-                            productos[i].setApellidoMaterno(bf.readLine());
-                            System.out.print("Telefono:");
-                            productos[i].setTelefono(bf.readLine());
-                            System.out.print("Direccion: ");
-                            productos[i].setDirrecion(bf.readLine());
-                            System.out.print("Edad: ");
-                            productos[i].setEdad(sc.nextInt());
+                    boolean valid = false;
+                    do {
+                        try {
+                            for (int i = 0; i < productos.length; i++) {
+                                System.out.print("Ingresa el codigo cliente: ");
+                                productos[i].setCodigoCliente(sc.nextInt());
+                                valid = true;
+                                System.out.print("Nombre o nombres:");
+                                productos[i].setNombre(bf.readLine());
+                                valid = true;
+                                System.out.print("Apellido Paterno:");
+                                productos[i].setApellidoPaterno(bf.readLine());
+                                valid = true;
+                                System.out.print("Apeliido Materno:");
+                                productos[i].setApellidoMaterno(bf.readLine());
+                                valid = true;
+                                System.out.print("Telefono:");
+                                productos[i].setTelefono(bf.readLine());
+                                valid = true;
+                                System.out.print("Direccion: ");
+                                productos[i].setDirrecion(bf.readLine());
+                                valid = true;
+                                System.out.print("Edad: ");
+                                productos[i].setEdad(sc.nextInt());
+                                valid = true;
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Ya no hay espacio en la cartera:");
+                            valid = false;
                         }
-                    } catch (Exception e) {
-                        System.out.println("Ya no hay espacio en la cartera:");
-                    }
+                    } while (false == valid);
+
                     break;
                 case 2:
                     System.out.println("---Clientes");
@@ -110,12 +119,9 @@ public class MainProyecto {
                                 }
                                 break;
                             case 2:
-                                boolean valid;
-                                do {
                                     try {
                                         System.out.println("Nombre a buscar: ");
                                         opc4 = (bf.readLine());
-                                        valid = true;
                                         for (int i = 0; i < productos.length; i++) {
                                             if (opc4.equals(productos[i].getNombre())) {
                                                 System.out.println("codigo cliente: " + productos[i].getCodigoCliente());
@@ -127,13 +133,15 @@ public class MainProyecto {
                                                 System.out.println("edad: " + productos[i].getEdad());
 
                                             }
+                                            else{
+                                                System.out.println("ese nombre no existe ");
+                                            }
                                         }
+                                        
                                     } catch (Exception e) {
                                         System.out.print("Ese no nombre no existe aqui :");
-                                        valid = false;
+                                        
                                     }
-                                } while (valid == false);
-
                                 break;
                             case 0:
                                 System.out.println("Regresaste al otro menu");
@@ -144,6 +152,7 @@ public class MainProyecto {
                     System.out.println("Cerra Systema ");
                     break;
             }
+
         }
     }
 }
