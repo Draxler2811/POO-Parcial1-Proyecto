@@ -6,6 +6,7 @@
 package MenuProyecto;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
@@ -24,6 +25,7 @@ public class MainProyecto {
         tam = sc.nextInt();
         productos = new Proyecto1[tam];
         int tam2 = 0;
+        tam2=tam;
 
         for (int i = 0; i < productos.length; i++) {
             productos[i] = new Proyecto1();
@@ -34,8 +36,7 @@ public class MainProyecto {
         int opc3 = 100;//menu secundario
         String opc4 = "";
 
-        tam2 = tam;
-
+        
         while (opc != 0) {
             System.out.println("Tamaño de la cartera : " + tam);
             System.out.println("te quedan estos registro: " + tam2);
@@ -45,41 +46,38 @@ public class MainProyecto {
             System.out.println("0) Cerrar Systema ");
             System.out.println("Elige una opcion: ");
             opc = sc.nextInt();
-            tam2 = tam2 - tam;
+            tam2 = tam-tam2;
             switch (opc) {
                 case 1:
-                    boolean valid = false;
-                    do {
                         try {
                             for (int i = 0; i < productos.length; i++) {
+                                
                                 System.out.print("Ingresa el codigo cliente: ");
                                 productos[i].setCodigoCliente(sc.nextInt());
-                                valid = true;
+                             
                                 System.out.print("Nombre o nombres:");
                                 productos[i].setNombre(bf.readLine());
-                                valid = true;
+                                
                                 System.out.print("Apellido Paterno:");
                                 productos[i].setApellidoPaterno(bf.readLine());
-                                valid = true;
+                               
                                 System.out.print("Apeliido Materno:");
                                 productos[i].setApellidoMaterno(bf.readLine());
-                                valid = true;
+                              
                                 System.out.print("Telefono:");
                                 productos[i].setTelefono(bf.readLine());
-                                valid = true;
+                              
                                 System.out.print("Direccion: ");
                                 productos[i].setDirrecion(bf.readLine());
-                                valid = true;
+                              
                                 System.out.print("Edad: ");
                                 productos[i].setEdad(sc.nextInt());
-                                valid = true;
+                               
                             }
                         } catch (Exception e) {
-                            System.out.println("Ya no hay espacio en la cartera:");
-                            valid = false;
+                            System.out.println("ya no hay espacion");
+                        
                         }
-                    } while (false == valid);
-
                     break;
                 case 2:
                     System.out.println("---Clientes");
@@ -134,12 +132,12 @@ public class MainProyecto {
 
                                             }
                                             else{
-                                                System.out.println("ese nombre no existe ");
+                                                System.out.println("Ese nombre no existe ");
                                             }
                                         }
-                                        
+                                            
                                     } catch (Exception e) {
-                                        System.out.print("Ese no nombre no existe aqui :");
+                                        System.out.print(e.getMessage());
                                         
                                     }
                                 break;
