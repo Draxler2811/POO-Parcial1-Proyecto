@@ -23,8 +23,9 @@ public class MainProyecto {
         int tam = 0;
         System.out.println("De que tamaño es la cartela ");
         tam = sc.nextInt();
+        
         productos = new Proyecto1[tam];
-        int tam2 = 0;
+        int tam2 = 1;
         tam2=tam;
 
         for (int i = 0; i < productos.length; i++) {
@@ -46,12 +47,13 @@ public class MainProyecto {
             System.out.println("0) Cerrar Systema ");
             System.out.println("Elige una opcion: ");
             opc = sc.nextInt();
-            tam2 = tam-tam2;
+            tam2 = tam2-tam;
+            
             switch (opc) {
                 case 1:
                         try {
                             for (int i = 0; i < productos.length; i++) {
-                                
+                           
                                 System.out.print("Ingresa el codigo cliente: ");
                                 productos[i].setCodigoCliente(sc.nextInt());
                              
@@ -72,10 +74,10 @@ public class MainProyecto {
                               
                                 System.out.print("Edad: ");
                                 productos[i].setEdad(sc.nextInt());
-                               
+                                
                             }
                         } catch (Exception e) {
-                            System.out.println("ya no hay espacion");
+                            System.out.println("ya no hay espacion en la cartera ");
                         
                         }
                     break;
@@ -89,7 +91,7 @@ public class MainProyecto {
                         System.out.println("Telefono:" + productos[i].getTelefono());
                         System.out.println("Dirrecion: " + productos[i].getDirrecion());
                         System.out.println("Edad: " + productos[i].getTelefono());
-
+                        tam2++;
                     }
                     break;
                 case 3:
@@ -143,6 +145,7 @@ public class MainProyecto {
                                 break;
                             case 0:
                                 System.out.println("Regresaste al otro menu");
+                               
                         }
                     }
                     break;
