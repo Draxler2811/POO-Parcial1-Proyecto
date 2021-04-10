@@ -21,12 +21,14 @@ public class MainProyecto {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         Proyecto1[] productos;
         int tam = 0;
+         
         System.out.println("De que tamaño es la cartela ");
         tam = sc.nextInt();
         
-        productos = new Proyecto1[tam];
+       productos = new Proyecto1[tam];
         int tam2 = 1;
         tam2=tam;
+       
 
         for (int i = 0; i < productos.length; i++) {
             productos[i] = new Proyecto1();
@@ -51,8 +53,9 @@ public class MainProyecto {
             
             switch (opc) {
                 case 1:
+                    
                         try {
-                            for (int i = 0; i < productos.length; i++) {
+                            for (int i = 0; i <productos.length; i++) {
                            
                                 System.out.print("Ingresa el codigo cliente: ");
                                 productos[i].setCodigoCliente(sc.nextInt());
@@ -80,6 +83,7 @@ public class MainProyecto {
                             System.out.println("ya no hay espacion en la cartera ");
                         
                         }
+                       
                     break;
                 case 2:
                     System.out.println("---Clientes");
@@ -122,6 +126,7 @@ public class MainProyecto {
                                     try {
                                         System.out.println("Nombre a buscar: ");
                                         opc4 = (bf.readLine());
+                                       
                                         for (int i = 0; i < productos.length; i++) {
                                             if (opc4.equals(productos[i].getNombre())) {
                                                 System.out.println("codigo cliente: " + productos[i].getCodigoCliente());
@@ -131,15 +136,13 @@ public class MainProyecto {
                                                 System.out.println("Telefono: " + productos[i].getTelefono());
                                                 System.out.println("Dirrecion: " + productos[i].getDirrecion());
                                                 System.out.println("edad: " + productos[i].getEdad());
-
+                                               
                                             }
-                                            else{
-                                                System.out.println("Ese nombre no existe ");
-                                            }
+                                           
                                         }
                                             
                                     } catch (Exception e) {
-                                        System.out.print(e.getMessage());
+                                        System.out.print("Nombre no encontrado");
                                         
                                     }
                                 break;
